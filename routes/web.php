@@ -18,8 +18,9 @@ Route::get('/', function () {
 Route::get('/home' , 'PageController@home');
 
 Route::get('/contact', 'PageController@contact');
+Route::get('pages/profile', 'PageController@profile');
 
 Route::resource('posts', 'PostController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
