@@ -20,18 +20,18 @@
 
 
 
-    <small>{{$post->created_at}}</small>
+    <small>{{$post->created_at}} by {{$post->user->name}}></small>
     <br>
     <br>
     <br>
 
-
+@if(!Auth::guest())
+@if(Auth::user()->id ==$post->user_id)
 
     <a href="{{action('PostController@edit',$post->id)}}"><img src="https://www.freeiconspng.com/uploads/edit-png-icon-blue-pencil-18.png" alt=""style="width: 35px;"></a>
     {!! Form::open(['action'=>['PostController@destroy', $post->id], 'method'=>'DELETE']) !!}
     {{Form::submit('delete',['class'=>'ali'])}}
     {!! Form::close() !!}
-
-
-
+@endif
+@endif
     @endsection

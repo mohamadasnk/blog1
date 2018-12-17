@@ -23,4 +23,4 @@ Route::get('pages/profile', 'PageController@profile');
 Route::resource('posts', 'PostController');
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('pages/profile', 'HomeController@index');

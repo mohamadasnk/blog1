@@ -12,6 +12,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=> ['index','show']]);
+    }
+
+
     public function index()
     {
         $post=Post::orderBy('created_at', 'asc')->paginate(2);
@@ -46,6 +52,7 @@ class PostController extends Controller
         $post=new Post();
         $post->title=$request->input('title');
         $post->body=$request->input('body');
+        $post->user_id=\Auth::user()->id;
         $post->save();
 
         return redirect('/posts')->with('ok','Your Post is created');

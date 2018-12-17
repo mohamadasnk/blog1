@@ -12,7 +12,7 @@
                             <a href="{{action('PostController@show',$data->id)}}"> {{$data->title}} </a> <br>
                                 {{$data->body}}
 
-                               <small> <br> this post is written at {{$data->created_at}}</small>
+                               <small> <br> this post is written at {{$data->created_at}} by {{$data->user->name}}</small>
                                 <br> <br>
                                 <br> <br>
                         </div>
