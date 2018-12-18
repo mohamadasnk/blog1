@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
-
+use Session;
 class PostController extends Controller
 {
     /**
@@ -21,8 +21,11 @@ class PostController extends Controller
     public function index()
     {
         $post=Post::orderBy('created_at', 'asc')->paginate(2);
+
+
 //           $post= Post::all();
         return view('posts.index')->with('post',$post);
+
     }
 
     /**
@@ -45,14 +48,30 @@ class PostController extends Controller
     {
         $this->validate($request,[
            'title'=>'required',
-           'body'=>'required'
-
+           'body'=>'required',
+            'image'=>'image|nullable'
         ]);
+
+        if ($request->hasFile('image')){
+
+            $fullImage=$request->file('image')->getClientOriginalName();
+            $filename=pathinfo($fullImage,PATHINFO_FILENAME);
+            $ext=$request->file('image')->getClientOriginalExtension();
+            $fileNameToStore= $filename. '_'. time(). '.'. $ext;
+            $path=$request->file('image')->storeAs('public/images',$fileNameToStore);
+
+        }else{
+
+            $fileNameToStore= 'noimage.jpg';
+
+        }
 
         $post=new Post();
         $post->title=$request->input('title');
         $post->body=$request->input('body');
+
         $post->user_id=\Auth::user()->id;
+        $post->image=$fileNameToStore;
         $post->save();
 
         return redirect('/posts')->with('ok','Your Post is created');

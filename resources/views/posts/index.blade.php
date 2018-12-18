@@ -10,6 +10,18 @@
                         @foreach($post as $data)
                         <div class="well">
                             <a href="{{action('PostController@show',$data->id)}}"> {{$data->title}} </a> <br>
+
+                            <img style="width: 200px;" src="http://localhost/blog1/public/storage/images/{{$data->image}}" alt="">
+                            <br>
+
+
+
+
+
+
+
+
+                            <br>
                                 {{$data->body}}
 
                                <small> <br> this post is written at {{$data->created_at}} by {{$data->user->name}}</small>
