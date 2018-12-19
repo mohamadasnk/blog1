@@ -24,10 +24,7 @@ Route::resource('posts', 'PostController');
 Auth::routes();
 
 Route::get('pages/profile', 'HomeController@index');
-Route::get('like/{$id}', 'LikeController@AddLike');
-Route::resource('like', 'LikeController');
-
-
+Route::get('posts/{id}/like', 'PostController@postlike');
 
 
 

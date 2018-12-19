@@ -19,6 +19,14 @@ public $timestamps=true;
 
 
 
+        public function likesForposts(){
+
+
+          return $this->hasMany('App\Like');
+
+        }
+
+
 
 
 

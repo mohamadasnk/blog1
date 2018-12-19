@@ -19,12 +19,20 @@
     <img style="width: 500px" src="http://localhost/blog1/public/storage/images/{{$post->image}}" alt="">
     <br>
 
-    {{--<a href="{{action('LikeController@AddLike', $post->id)}}"> <img style="width: 25px" src="http://localhost/blog1/public/img/like.png" alt=""> </a>--}}
-    {!! Form::open(['action'=>['LikeController@AddLike',$post->id ],'method'=>'POST']) !!}
-    {{Form::submit('like')}}
-    {!!Form::close() !!}
+    <a href="http://localhost/blog1/public/posts/{{$post->id}}/like" >
+
+    @if()
 
 
+
+
+
+
+
+        <i class="fa fa-heart-o"></i>  </a>
+
+
+    {{--action('LikeController@AddLike', $post->id)--}}
 
 
     <br>

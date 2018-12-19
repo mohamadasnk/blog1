@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Post;
 use Illuminate\Http\Request;
 use Session;
@@ -147,4 +148,20 @@ class PostController extends Controller
 
         return redirect('/posts')->with('ok', 'Your post is deleted');
     }
+
+    public function postlike($id){
+
+
+
+        $like= new Like();
+        $like->post_id=$id;
+        $like->user_id = auth()->user()->id;
+
+        $like->save();
+        return redirect('posts/'.$id);
+
+
+    }
+
+
 }
