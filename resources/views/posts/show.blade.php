@@ -18,21 +18,8 @@
 
     <img style="width: 500px" src="http://localhost/blog1/public/storage/images/{{$post->image}}" alt="">
     <br>
-
     <a href="http://localhost/blog1/public/posts/{{$post->id}}/like" >
-
-    @if()
-
-
-
-
-
-
-
-        <i class="fa fa-heart-o"></i>  </a>
-
-
-    {{--action('LikeController@AddLike', $post->id)--}}
+        <i class="fa fa-heart-o"></i> </a>
 
 
     <br>
